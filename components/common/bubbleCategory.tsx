@@ -9,7 +9,7 @@ const BubbleCategory = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/category");
+      const res = await axios.get("https://urnukh.vercel.app/api/category");
       setCategories(res.data);
     } catch (err) {
       console.error("Category татахад алдаа:", err);
