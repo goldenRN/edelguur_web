@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/table';
 import { Pencil, Trash } from 'lucide-react';
 
-interface State {
+export interface State {
   id: number;
   name: string;
   description:string;

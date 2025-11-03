@@ -7,14 +7,8 @@ import { Plus } from 'lucide-react';
 import SubCategoryTable from './SubCategoryTable';
 import BackButton from '@/components/BackButton';
 import { describe } from 'node:test';
+import { SubCategory } from '@/app/types/subcategory';
 
-interface SubCategory {
-  category_id: number;
-  category_name: string;
-  name: string;
-  description?: string;
-  id?: number;
-}
 interface Category {
   id: number,
   name: string,
@@ -69,7 +63,7 @@ const SubCategoryPage: React.FC = () => {
       if (!res.ok) throw new Error('Дэд ангилал нэмэхэд алдаа гарлаа');
       else {
         const data = await res.json();
-       setSubCategories(prev => [...prev, data]);
+        setSubCategories(prev => [...prev, data]);
       }
       setOpenModal(false);
       await fetchCategories(); // жагсаалтаа дахин татах

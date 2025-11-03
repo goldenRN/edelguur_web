@@ -13,15 +13,7 @@ import {
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Pencil, Trash } from 'lucide-react';
-
-
-interface SubCategory {
-  category_id?: number;
-  category_name?: string;
-  name?: string;
-  description?: string;
-  id?: number;
-}
+import { SubCategory } from '@/app/types/subcategory';
 
 interface SubCategoryTableProps {
   subCategories: SubCategory[];
@@ -65,7 +57,7 @@ const SubCategoryTable = ({ subCategories, onDelete, onEdit }: SubCategoryTableP
                   </button>
                   <button
                     className="bg-red-200 hover:bg-red-500 text-black font-bold py-1 px-3 rounded text-xs"
-                    onClick={() => onDelete ? onDelete(scat.id) : null}
+                    onClick={() => onDelete ? onDelete(scat.category_id) : null}
                   >
                     <Trash size={16} />
                   </button>

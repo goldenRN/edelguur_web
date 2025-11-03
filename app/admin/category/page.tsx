@@ -6,13 +6,13 @@ import EditCategoryModal from './EditCategoryModal';
 import { Plus } from 'lucide-react';
 import CategoryTable from './categoryTable';
 import BackButton from '@/components/BackButton';
-
-interface Category {
-  id: number;
-  name: string;
-  description?: string;
-  image_url?: string;
-}
+import { Category } from "./categoryTable";
+// interface Category {
+//   id: number;
+//   name: string;
+//   description?: string;
+//   image_url?: string;
+// }
 
 const CategoryPage: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -31,7 +31,16 @@ const CategoryPage: React.FC = () => {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const data = await res.json();
-      setCategories(data);
+      const formatted: Category[] = data.map((c: any) => ({
+        category_id: c.id,
+        category_name: c.name,
+        category_image: c.image_url,
+        description: c.description,
+        subcategories: c.subcategories || [],
+      }));
+
+      setCategories(formatted);
+      // setCategories(data);
     } catch (err) {
       console.error(err);
     }
@@ -72,7 +81,7 @@ const CategoryPage: React.FC = () => {
 
     const data = await res.json();
     if (res.ok) {
-      setCategories(prev => prev.map(c => (c.id === id ? data : c)));
+      setCategories(prev => prev.map(c => (c.category_id === id ? data : c)));
     } else {
       alert(data.message || 'Ангилал засахад алдаа гарлаа');
     }
@@ -105,7 +114,7 @@ const CategoryPage: React.FC = () => {
               const error = await res.json();
               return alert(error.message || 'Устгах үед алдаа гарлаа');
             }
-            setCategories((prev) => prev.filter((cat) => cat.id !== id));
+            setCategories((prev) => prev.filter((cat) => cat.category_id !== id));
             alert('Амжилттай устлаа');
           } catch (err) {
             alert('Серверийн алдаа');
@@ -128,3 +137,11 @@ const CategoryPage: React.FC = () => {
 };
 
 export default CategoryPage;
+
+
+
+
+
+
+
+

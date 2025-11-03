@@ -3,17 +3,13 @@
 import React, { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Category } from "./categoryTable";
 
 interface EditCategoryModalProps {
     open: boolean;
     onClose: () => void;
     onSubmit: (id: number, formData: FormData) => Promise<void>;
-    category: {
-        id: number;
-        name: string;
-        description?: string;
-        image_url?: string;
-    } | null;
+    category: Category | null;
 }
 
 const EditCategoryModal = ({ open, onClose, onSubmit, category }: EditCategoryModalProps) => {
@@ -25,7 +21,7 @@ const EditCategoryModal = ({ open, onClose, onSubmit, category }: EditCategoryMo
     // category солигдсон үед state шинэчлэх
     useEffect(() => {
         if (category) {
-            setName(category.name);
+            setName(category.category_name);
             setDescription(category.description || '');
             setImage(null);
         }
@@ -56,7 +52,7 @@ const EditCategoryModal = ({ open, onClose, onSubmit, category }: EditCategoryMo
 
         try {
             setLoading(true);
-            await onSubmit(category.id, formData);
+            await onSubmit(category.category_id, formData);
             setName('');
             setDescription('');
             setImage(null);
@@ -120,9 +116,9 @@ const EditCategoryModal = ({ open, onClose, onSubmit, category }: EditCategoryMo
                         />
                     </div>
 
-                    {(image || category.image_url) && (
+                    {(image || category.category_image) && (
                         <img
-                            src={image ? URL.createObjectURL(image) : `http://localhost:4000${category.image_url}`}
+                            src={image ? URL.createObjectURL(image) : `http://localhost:4000${category.category_image}`}
                             alt="preview"
                             className="mt-2 w-32 h-32 object-cover rounded"
                         />

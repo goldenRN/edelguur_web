@@ -3,7 +3,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
+import { SubCategory } from '@/app/types/subcategory';
 
 
 interface Category {
@@ -17,7 +17,7 @@ interface Category {
 interface EditSubCategoryModalProps {
   open: boolean;
   onClose: () => void;
-  category?: Category | null;
+  category: SubCategory | null; 
   onSubmit: (id: number, data: { name: string; description?: string; category_id: number }) => Promise<void>;
 }
 
@@ -71,7 +71,7 @@ const EditSubCategoryModal: React.FC<EditSubCategoryModalProps> = ({
 
     try {
       setLoading(true);
-      await onSubmit(category.id, { name, description, category_id: categoryId });
+      await onSubmit(category.category_id, { name, description, category_id: categoryId });
       setError('');
       onClose();
     } catch (err) {

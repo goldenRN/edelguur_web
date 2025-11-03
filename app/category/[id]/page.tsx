@@ -1,67 +1,4 @@
-// "use client";
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "next/navigation";
-// import axios from "axios";
-// import Image from "next/image";
 
-// const CategoryPage = () => {
-//   const { id } = useParams();
-//   const [products, setProducts] = useState<any[]>([]);
-//   const [categoryName, setCategoryName] = useState("");
-
-//   const fetchProducts = async () => {
-//     try {
-//       const res = await axios.get(
-//         `http://localhost:4000/api/product/category/${id}`
-//       );
-//       setProducts(res.data.products);
-//       setCategoryName(res.data.category_name);
-//     } catch (err) {
-//       console.error("Бараа татахад алдаа:", err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     if (id) fetchProducts();
-//   }, [id]);
-
-//   return (
-//     <div className="max-w-7xl mx-auto p-6">
-//       <h1 className="text-2xl font-semibold mb-6">{categoryName} бараанууд</h1>
-
-//       {products.length === 0 ? (
-//         <p className="text-gray-500">Энэ ангилалд бараа алга байна.</p>
-//       ) : (
-//         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-//           {products.map((product) => (
-//             <div
-//               key={product.product_id}
-//               className="border rounded-lg p-4 hover:shadow-md transition"
-//             >
-//               <Image
-//                 src={
-//                   product.images?.[0]?.image_url
-//                     ? product.images[0].image_url
-//                     : "/placeholder.png"
-//                 }
-//                 alt={product.product_name}
-//                 width={200}
-//                 height={200}
-//                 className="w-full h-48 object-cover rounded-md"
-//               />
-//               <h3 className="mt-3 text-sm font-medium">
-//                 {product.product_name}
-//               </h3>
-//               <p className="text-gray-600 text-sm">{product.price}₮</p>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default CategoryPage;
 
 'use client';
 
@@ -97,12 +34,20 @@ export default function CategoryPage() {
 
   // 🧮 Sort function
   const sortedProducts = [...products].sort((a, b) => {
-    if (sort === 'new') return new Date(b.created_at) - new Date(a.created_at);
-    if (sort === 'old') return new Date(a.created_at) - new Date(b.created_at);
-    if (sort === 'price-asc') return a.price - b.price;
-    if (sort === 'price-desc') return b.price - a.price;
-    return 0;
-  });
+  if (sort === 'new') return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  if (sort === 'old') return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+  if (sort === 'price-asc') return a.price - b.price;
+  if (sort === 'price-desc') return b.price - a.price;
+  return 0;
+});
+
+//   const sortedProducts = [...products].sort((a, b) => {
+//     // if (sort === 'new') return new Date(b.created_at) - new Date(a.created_at);
+//     // if (sort === 'old') return new Date(a.created_at) - new Date(b.created_at);
+//     if (sort === 'price-asc') return a.price - b.price;
+//     if (sort === 'price-desc') return b.price - a.price;
+//     return 0;
+//   });
 
   // 🧩 Filtered list
   const filteredProducts = sortedProducts.filter((p) => {

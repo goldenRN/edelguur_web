@@ -98,7 +98,7 @@ return (
                       addToCart({
                         id: product.id,
                         name: product.name,
-                        price: product.price,
+                        price: product.price ?? 0,
                         image_url: imageUrl,
                         quantity: 1,
                       })
