@@ -21,7 +21,7 @@ export default function ChangePassword() {
 
         // Backend рүү API хүсэлт явуулах хэсэг
         try {
-            const res = await fetch("https://shdmonitoring.ub.gov.mn/api/auth/change-password", {
+            const res = await fetch("https://edelguur-api.onrender.com/api/auth/change-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ oldPassword: oldPassword, newPassword: newPassword, userId: 1 }),

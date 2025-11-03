@@ -54,7 +54,7 @@ export default function AutoImageSlider({ images, isLoaded }: Props) {
             {images.map((img, index) => (
               <img
                 key={img.imageid}
-                src={`https://shdmonitoring.ub.gov.mn/${img.imagepath}`}
+                src={`https://edelguur-api.onrender.com/${img.imagepath}`}
                 alt="uploaded"
                 className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out ${
                   index === currentIndex ? 'opacity-100 z-0' : 'opacity-0 z-[-1]'

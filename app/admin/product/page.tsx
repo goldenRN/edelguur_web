@@ -36,7 +36,7 @@ const ProductPage = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:4000/api/product");
+      const res = await axios.get("https://edelguur-api.onrender.com/api/product");
       setProducts(res.data);
     } catch (err) {
       console.error("Бараа татахад алдаа:", err);
@@ -70,7 +70,7 @@ const ProductPage = () => {
   }, [products, search, sortField, sortOrder]);
   const handleViewImages = async (productId: number) => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/productimg/${productId}`);
+      const res = await axios.get(`https://edelguur-api.onrender.com/api/productimg/${productId}`);
       setImages(res.data.map((img: any) => img.image_url));
       setImageModalOpen(true);
     } catch (err) {
@@ -90,7 +90,7 @@ const ProductPage = () => {
   const handleDelete = async (id: number) => {
     if (!confirm("⚠️ Энэ барааг устгах уу?")) return;
     try {
-      await axios.delete(`http://localhost:4000/api/product/${id}`);
+      await axios.delete(`https://edelguur-api.onrender.com/api/product/${id}`);
       await fetchProducts();
     } catch (err) {
       console.error("Устгах үед алдаа:", err);

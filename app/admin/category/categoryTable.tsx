@@ -66,13 +66,13 @@ const CategoryTable = ({ categories, onDelete, onEdit }: CategoryTableProps) => 
                 <TableCell>
                   {cat.category_image && (
                     <img
-                      src={`http://localhost:4000${cat.category_image}`}
+                      src={`https://edelguur-api.onrender.com${cat.category_image}`}
                       alt={cat.category_name}
                       width={50}
                       height={50}
                       className="cursor-pointer rounded-md"
                       onClick={() =>
-                        setSelectedImage(`http://localhost:4000${cat.category_image}`)
+                        setSelectedImage(`https://edelguur-api.onrender.com${cat.category_image}`)
                       }
                     />
                   )}

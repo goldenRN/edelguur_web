@@ -8,7 +8,7 @@ const CategoryPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/category");
+      const res = await axios.get("https://edelguur-api.onrender.com/api/category");
       setCategories(res.data);
     } catch (err) {
       console.error("Category татахад алдаа:", err);
@@ -27,7 +27,7 @@ const CategoryPage = () => {
             {/* 🟢 Category мөр */}
             <div className="flex items-center gap-3">
               <Image
-                src={`http://localhost:4000${cat.category_image}`}
+                src={`https://edelguur-api.onrender.com${cat.category_image}`}
                 alt={cat.category_name}
                 width={44}
                 height={44}

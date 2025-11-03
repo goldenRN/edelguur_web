@@ -20,7 +20,7 @@ export default function CategoryPage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/category/${id}`);
+      const res = await axios.get(`https://edelguur-api.onrender.com/api/category/${id}`);
       setProducts(res.data.products);
       setCategoryName(res.data.category_name);
     } catch (err) {

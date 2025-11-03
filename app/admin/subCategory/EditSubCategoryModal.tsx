@@ -48,7 +48,7 @@ const EditSubCategoryModal: React.FC<EditSubCategoryModalProps> = ({
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch('http://localhost:4000/api/category');
+      const res = await fetch('https://edelguur-api.onrender.com/api/category');
       const data = await res.json();
       setCategories(data);
     } catch (err) {

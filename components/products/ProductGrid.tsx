@@ -28,7 +28,7 @@ export default function ProductGrid({ type, title }: Props) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`https://urnukh-git-main-goldens-projects-4c53454f.vercel.app/api/product/${type}`, {
+        const res = await fetch(`https://edelguur-api.onrender.com/api/product/${type}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json" // хэрвээ JWT шаардлагатай бол

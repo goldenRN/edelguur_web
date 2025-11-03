@@ -24,13 +24,13 @@ const UnitPage = () => {
   }, [])
 
   const fetchUnits = async () => {
-    const res = await fetch('http://localhost:4000/api/unit')
+    const res = await fetch('https://edelguur-api.onrender.com/api/unit')
     const data = await res.json()
     setUnits(data)
   }
 
   const handleAddUnit = async (data: { name: string; description: string }) => {
-    await fetch('http://localhost:4000/api/unit', {
+    await fetch('https://edelguur-api.onrender.com/api/unit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -45,7 +45,7 @@ const UnitPage = () => {
   }
 
   const handleUpdateUnit = async (id: number, name: string, description: string) => {
-    await fetch(`http://localhost:4000/api/unit/${id}`, {
+    await fetch(`https://edelguur-api.onrender.com/api/unit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, description }),
@@ -56,7 +56,7 @@ const UnitPage = () => {
 
   const handleDelete = async (id: number) => {
     if (!confirm('Устгах уу?')) return
-    await fetch(`http://localhost:4000/api/unit/${id}`, { method: 'DELETE' })
+    await fetch(`https://edelguur-api.onrender.com/api/unit/${id}`, { method: 'DELETE' })
     fetchUnits()
   }
 

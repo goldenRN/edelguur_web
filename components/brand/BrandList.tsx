@@ -26,7 +26,7 @@ export default function BrandList() {
     const fetchBrands = async () => {
         try {
             setLoading(true);
-            const res = await fetch('http://localhost:4000/api/brand');
+            const res = await fetch('https://edelguur-api.onrender.com/api/brand');
             const data = await res.json();
             setBrands(data || []);
         } catch (err) {

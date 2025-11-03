@@ -26,7 +26,7 @@ const CategoryPage: React.FC = () => {
   const fetchCategories = async () => {
     try {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      const res = await fetch("http://localhost:4000/api/category", {
+      const res = await fetch("https://edelguur-api.onrender.com/api/category", {
         method: 'GET',
         headers: { Authorization: `Bearer ${user.token}` },
       });
@@ -50,7 +50,7 @@ const CategoryPage: React.FC = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-      const res = await fetch('http://localhost:4000/api/category', {
+      const res = await fetch('https://edelguur-api.onrender.com/api/category', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -73,7 +73,7 @@ const CategoryPage: React.FC = () => {
   const handleUpdateCategory = async (id: number, formData: FormData) => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-    const res = await fetch(`http://localhost:4000/api/category/${id}`, {
+    const res = await fetch(`https://edelguur-api.onrender.com/api/category/${id}`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${user.token}` },
       body: formData,
@@ -106,7 +106,7 @@ const CategoryPage: React.FC = () => {
           if (!confirmed) return;
           try {
             const user = JSON.parse(localStorage.getItem('user') || '{}');
-            const res = await fetch(`http://localhost:4000/api/category/${id}`, {
+            const res = await fetch(`https://edelguur-api.onrender.com/api/category/${id}`, {
               method: 'DELETE',
               headers: { Authorization: `Bearer ${user.token}` },
             });

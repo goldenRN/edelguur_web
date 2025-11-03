@@ -24,7 +24,7 @@ const StatePage: React.FC = () => {
 
   const fetchStates = async () => {
     try {
-      const res = await fetch("http://localhost:4000/api/status", {
+      const res = await fetch("https://edelguur-api.onrender.com/api/status", {
       });
       const data = await res.json();
       setStates(data);
@@ -37,7 +37,7 @@ const StatePage: React.FC = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-      const res = await fetch('http://localhost:4000/api/status', {
+      const res = await fetch('https://edelguur-api.onrender.com/api/status', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const StatePage: React.FC = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-      const res = await fetch(`http://localhost:4000/api/status/${id}`, {
+      const res = await fetch(`https://edelguur-api.onrender.com/api/status/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -86,35 +86,6 @@ const StatePage: React.FC = () => {
     }
   };
 
-  // const handleUpdateState = async (id: number, name: string, description: string) => {
-  //   try {
-  //     const user = JSON.parse(localStorage.getItem('user') || '{}');
-
-  //     const res = await fetch(`http://localhost:4000/api/status/${id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${user.token}`,
-  //       },
-  //       body: JSON.stringify({ id: id, name: name, description: description }),
-  //     });
-
-  //     const updated = await res.json();
-
-  //     if (!res.ok) throw new Error(updated.message || 'Төлөв засахад алдаа гарлаа');
-
-  //     // жагсаалтыг шинэчлэх
-  //     setStates(prev => prev.map(c => (c.id === id ? updated : c))
-  //     // setStates(prev =>
-  //     //   prev.map(c => (c.id === id ? { ...c, name: updated.name || name } : c))
-  //     );
-
-  //     setEditModalOpen(false);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert('Серверийн алдаа гарлаа');
-  //   }
-  // };
   return (
     <div className="w-[calc(100vw-300px)] p-4">
       <div className="flex justify-between items-center bg-white sticky top-0 z-10 p-2 mb-4">
@@ -136,7 +107,7 @@ const StatePage: React.FC = () => {
           if (!confirmed) return;
           try {
             const user = JSON.parse(localStorage.getItem('user') || '{}');
-            const res = await fetch(`http://localhost:4000/api/status/${id}`, {
+            const res = await fetch(`https://edelguur-api.onrender.com/api/status/${id}`, {
               method: 'DELETE',
               headers: { Authorization: `Bearer ${user.token}` },
             });
